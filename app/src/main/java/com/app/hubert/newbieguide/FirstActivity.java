@@ -4,12 +4,14 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.DashPathEffect;
 import android.graphics.Paint;
+import android.graphics.Rect;
 import android.graphics.RectF;
 import android.support.annotation.IntDef;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
+import android.view.ViewParent;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -75,6 +77,8 @@ public class FirstActivity extends AppCompatActivity {
         });
         //设置anchor 及 自定义绘制图形
         final View anchorView = findViewById(R.id.ll_anchor);
+        final Button btnList = findViewById(R.id.btn_relative);
+        final View parent = (View)btnList.getParent();
         final Button btnAnchor = (Button) findViewById(R.id.btn_anchor);
         btnAnchor.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,6 +93,10 @@ public class FirstActivity extends AppCompatActivity {
                                 paint.setStrokeWidth(10);
                                 paint.setPathEffect(new DashPathEffect(new float[]{20, 20}, 0));
                                 canvas.drawCircle(rectF.centerX(), rectF.centerY(), rectF.width() / 2 + 10, paint);
+                                Rect rect = ViewUtils.getLocationInView(parent, btnList);
+                                canvas.drawLine(rectF.centerX(),rectF.centerY() + rectF.height(),rect.centerX(),
+
+                                        rect.centerY(),paint);
                             }
                         })
                         .build();

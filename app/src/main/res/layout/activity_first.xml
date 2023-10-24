@@ -66,6 +66,8 @@
         android:id="@+id/btn_relative"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:text="相对位置展示引导布局" />
+        android:layout_gravity="bottom"
+        android:text="相对位置展示引导布局"
+        android:layout_marginLeft="100dp"
+        android:layout_marginStart="100dp" />
 </LinearLayout>
