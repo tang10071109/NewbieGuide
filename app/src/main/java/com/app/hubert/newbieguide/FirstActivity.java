@@ -76,7 +76,7 @@ public class FirstActivity extends AppCompatActivity {
             }
         });
         //设置anchor 及 自定义绘制图形
-        final View anchorView = findViewById(R.id.ll_anchor);
+        final View anchorView = (View) ((View) findViewById(R.id.ll_anchor)).getParent();
         final Button btnList = findViewById(R.id.btn_relative);
         final View parent = (View)btnList.getParent();
         final Button btnAnchor = (Button) findViewById(R.id.btn_anchor);
@@ -96,7 +96,7 @@ public class FirstActivity extends AppCompatActivity {
                                 Rect rect = ViewUtils.getLocationInView(parent, btnList);
                                 canvas.drawLine(rectF.centerX(),rectF.centerY() + rectF.height(),rect.centerX(),
 
-                                        rect.centerY(),paint);
+                                        rect.top,paint);
                             }
                         })
                         .build();
